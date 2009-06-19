@@ -1,0 +1,82 @@
+div.tn-layout {
+  width: 640pt;
+  font-family: Arial;
+}
+
+div.tn-status {
+  width: 140pt;
+  float: right;
+}
+div.tn-status span {
+  border: 1px solid #DDD;
+  background: #EEE;
+  display: block;
+  float: left;
+  width: 16pt;
+  height: 16pt;
+  line-height: 16pt;
+  text-align: center;
+  margin-bottom: 2pt;
+  margin-right: -1px;
+  cursor: pointer;
+}
+div.tn-status span.active,
+div.tn-status span:hover {
+  background: #FFA;
+}
+
+div.tn-field {
+  border: 1px solid #DDD;
+  background: #EEE;
+  width: 488pt;
+  height: 300px;
+}
+
+div.tn-keyboard div {
+  height: 34pt;
+  margin-left: -1pt;
+}
+div.tn-keyboard div span.tn-key {
+  display: block;
+  float: left;
+  height: 30pt;
+  line-height: 30pt;
+  width: 30pt;
+  text-align: center;
+  border: 1px solid #DDD;
+  margin: 1pt;
+  background: #EEE;
+}
+div.tn-keyboard div span.backspace {
+  width: 52pt;
+}
+div.tn-keyboard div span.enter {
+  width: 63pt;
+}
+div.tn-keyboard div span.r-shift {
+  width: 63pt;
+}
+div.tn-keyboard div span.l-shift {
+  width: 80pt;
+}
+div.tn-keyboard div span.space {
+  width: 231pt;
+}
+div.tn-keyboard div.row-2 {
+  margin-left: 42pt;
+}
+div.tn-keyboard div.row-3 {
+  margin-left: 54pt;
+}
+div.tn-keyboard div.row-5 {
+  margin-left: 120pt;
+}
+div.tn-keyboard span.tn-key span.up {
+  display: none;
+}
+div.shifted span.tn-key span {
+  display: none;
+}
+div.shifted span.tn-key span.up {
+  display: inline;
+}
