@@ -25,8 +25,8 @@ TypeNinja.Keyboard = new Class(Observer, {
     
     FINGERS: [
       '11234444321111',
-      '1234444321111',
-      '123444432111',
+      '01234444321111',
+      '0123444432111',
       '112344443211'
     ],
 
@@ -87,10 +87,10 @@ TypeNinja.Keyboard = new Class(Observer, {
   hightlightKey: function(event) {
     var key = this.keys[event.charCode] || this.keys[event.keyCode];
     if (key) {
-      key.highlight({duration: 160});
-      
-      if (!event.altKey && !event.ctrlKey && !event.metaKey)
+      if (!event.altKey && !event.ctrlKey && !event.metaKey) {
         event.stop();
+        key.highlight({duration: 160});
+      }
     }
   },
 
@@ -114,12 +114,18 @@ TypeNinja.Keyboard = new Class(Observer, {
     this.constructor.LAYOUTS[this.constructor.LAYOUTS.DEFAULT].each(function(row, i) {
       var row_el = this.buildRow(i, row);
       
-      if (i == 0) row_el.insert(this.buildKey('←', 'backspace', 8));
-      if (i == 2) row_el.insert(this.buildKey('Enter', 'enter', 13));
+      if (i == 0) row_el.insert(this.buildKey('&larr;', 'backspace', 8));
+      if (i == 1) row_el.insert(this.buildKey('&rarr;', 'tab'), 'top');
+      if (i == 2) {
+        row_el.insert({
+          top:    this.buildKey('', 'capslock'),
+          bottom: this.buildKey('&crarr;', 'enter', 13)
+        });
+      }
       if (i == 3) {
         row_el.insert({
-          top:    this.buildKey('Shift', 'r-shift', 16),
-          bottom: this.buildKey('Shift', 'l-shift', 16)
+          top:    this.buildKey('Shift', 'l-shift', 16),
+          bottom: this.buildKey('Shift', 'r-shift', 16)
         });
       }
       

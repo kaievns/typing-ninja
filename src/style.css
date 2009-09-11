@@ -3,28 +3,6 @@ div.tn-layout {
   font-family: Arial;
 }
 
-div.tn-status {
-  width: 140pt;
-  float: right;
-}
-div.tn-status span {
-  border: 1px solid #DDD;
-  background: #EEE;
-  display: block;
-  float: left;
-  width: 16pt;
-  height: 16pt;
-  line-height: 16pt;
-  text-align: center;
-  margin-bottom: 2pt;
-  margin-right: -1px;
-  cursor: pointer;
-}
-div.tn-status span.active,
-div.tn-status span:hover {
-  background: #FFA;
-}
-
 div.tn-field {
   border: 1px solid #DDD;
   background: #FFE;
@@ -32,46 +10,65 @@ div.tn-field {
   height: 300px;
 }
 
-div.tn-keyboard div {
-  height: 34pt;
-  margin-left: -1pt;
+div.tn-keyboard {
+  width: 41.5em;
+  height: 14.5em;
 }
+
 div.tn-keyboard div span.tn-keyboard-key {
+  cursor: default;
   display: block;
   float: left;
-  height: 30pt;
-  line-height: 30pt;
-  width: 30pt;
+  height: 2.5em;
+  line-height: 2.5em;
+  width: 2.5em;
   text-align: center;
   border: 1px solid #DDD;
-  margin: 1pt;
+  margin: .1em;
   background: #EEE;
   -moz-border-radius: .4em;
   -webkit-border-radius: .4em;
 }
 div.tn-keyboard div span.backspace {
-  width: 50pt;
+  width: 4.3em;
+}
+div.tn-keyboard div span.tab {
+  width: 3.5em;
+  color: #888;
+}
+div.tn-keyboard div span.tab:after {
+  content: '|';
+  font-size: 80%;
+  font-weight: bold;
 }
 div.tn-keyboard div span.enter {
-  width: 63pt;
+  width: 5.3em;
+}
+div.tn-keyboard div span.enter:before {
+  content: 'Enter';
+  margin-right: 0.5em;
+}
+div.tn-keyboard div span.capslock {
+  width: 4.3em;
+  color: #888;
+}
+div.tn-keyboard div span.capslock:after {
+  content: 'CLock';
 }
 div.tn-keyboard div span.r-shift {
-  width: 63pt;
+  width: 7em;
 }
 div.tn-keyboard div span.l-shift {
-  width: 80pt;
+  width: 5.4em;
 }
 div.tn-keyboard div span.space {
-  width: 231pt;
+  width: 22.3em;
 }
-div.tn-keyboard div.tn-keyboard-row-2 {
-  margin-left: 42pt;
-}
-div.tn-keyboard div.tn-keyboard-row-3 {
-  margin-left: 54pt;
+div.tn-keyboard div.tn-keyboard-row-2 span.tn-keyboard-key:last-child {
+  width: 3.3em;
 }
 div.tn-keyboard div.tn-keyboard-row-5 {
-  margin-left: 120pt;
+  margin-left: 8.5em;
 }
 div.tn-keyboard span.tn-keyboard-key span.up {
   display: none;
