@@ -1,21 +1,17 @@
 /**
  * Top level class of the application
  *
- * @copyright 2009 Nikolay V. Nemshilov aka St. <nemshilov#gmail.com>
+ * Copyright (C) 2009 Nikolay V. Nemshilov aka St.
  */
 
 var TypeNinja = new Class({
-  include: Options,
-  
-  initialize: function(element, options) {
-    this.setOptions(options);
-    this.element = $(element);
+  initialize: function(element) {
+    this.element = $E('div', {'class': 'tn-layout'}).insertTo(element);
     
-    if (!this.element) throw "Can't find the target element";
+    this.keyboard = new TypeNinja.Keyboard();
     
-    this.game = new TypeNinja.Game();
-    this.ui   = new TypeNinja.UI(this.element, this.game);
-    
-    this.ui.render();
+    this.element.insert([
+      this.keyboard.element
+    ]);
   }
 });

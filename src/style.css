@@ -36,7 +36,7 @@ div.tn-keyboard div {
   height: 34pt;
   margin-left: -1pt;
 }
-div.tn-keyboard div span.tn-key {
+div.tn-keyboard div span.tn-keyboard-key {
   display: block;
   float: left;
   height: 30pt;
@@ -46,9 +46,11 @@ div.tn-keyboard div span.tn-key {
   border: 1px solid #DDD;
   margin: 1pt;
   background: #EEE;
+  -moz-border-radius: .4em;
+  -webkit-border-radius: .4em;
 }
 div.tn-keyboard div span.backspace {
-  width: 52pt;
+  width: 50pt;
 }
 div.tn-keyboard div span.enter {
   width: 63pt;
@@ -62,21 +64,33 @@ div.tn-keyboard div span.l-shift {
 div.tn-keyboard div span.space {
   width: 231pt;
 }
-div.tn-keyboard div.row-2 {
+div.tn-keyboard div.tn-keyboard-row-2 {
   margin-left: 42pt;
 }
-div.tn-keyboard div.row-3 {
+div.tn-keyboard div.tn-keyboard-row-3 {
   margin-left: 54pt;
 }
-div.tn-keyboard div.row-5 {
+div.tn-keyboard div.tn-keyboard-row-5 {
   margin-left: 120pt;
 }
-div.tn-keyboard span.tn-key span.up {
+div.tn-keyboard span.tn-keyboard-key span.up {
   display: none;
 }
-div.shifted span.tn-key span {
+div.shifted span.tn-keyboard-key span {
   display: none;
 }
-div.shifted span.tn-key span.up {
+div.shifted span.tn-keyboard-key span.up {
   display: inline;
+}
+div.tn-keyboard div span.tn-keyboard-key-1-finger {
+  background: #FEF;
+}
+div.tn-keyboard div span.tn-keyboard-key-2-finger {
+  background: #EFE;
+}
+div.tn-keyboard div span.tn-keyboard-key-3-finger {
+  background: #EEF;
+}
+div.tn-keyboard div span.tn-keyboard-key-4-finger {
+  background: #FEE;
 }
