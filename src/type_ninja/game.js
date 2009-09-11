@@ -30,5 +30,9 @@ TypeNinja.Game = new Class({
     
     this.keyboard = new TypeNinja.Game.Keyboard(this.LAYOUTS[lang]);
     this.sequence = new TypeNinja.Game.Sequence(this.SEQUENCE, this.LAYOUTS.ENG, this.LAYOUTS[lang]);
+  },
+  
+  currentLetters: function() {
+    return this.sequence.letters.slice(0, this.sequence.position);
   }
 });

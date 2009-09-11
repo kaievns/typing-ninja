@@ -28,14 +28,17 @@ TypeNinja.UI.Keyboard = new Class({
     
     this.element.insert(this.row(4, [this.key(' ', 'space', 32)]));
     
-    window.addEventListener('keydown', (function(e) {
-      if (e.keyCode == 16) this.element.addClass('shifted');
-    }).bind(this), false);
-    window.addEventListener('keyup', (function(e) {
-      if (e.keyCode == 16) this.element.removeClass('shifted');
-    }).bind(this), false);
+    var receiver = $E('input').setStyle({border:'none',display:'block',width:'0px',height:'0px'}).insertTo(document.body);
     
-    window.addEventListener('keypress', this.highlightKey.bindAsEventListener(this), false);
+    window.addEventListener('focus', function() { receiver.focus(); }, false);
+    window.addEventListener('click', function() { receiver.focus(); }, false);
+    
+    
+    receiver.on('keydown', (function(e) {
+      if (e.keyCode == 16) this.element.addClass('shifted');
+    }).bind(this)).on('keyup', (function(e) {
+      if (e.keyCode == 16) this.element.removeClass('shifted');
+    }).bind(this)).on('keypress', this.highlightKey.bindAsEventListener(this), false).focus();
   },
   
   highlightKey: function(e) {

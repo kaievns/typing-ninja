@@ -23,5 +23,13 @@ TypeNinja.UI = new Class({
       this.field.element,
       this.keyboard.element
     ]);
+  },
+  
+  render: function() {
+    var letter = this.fallingLetter(this.model.currentLetters().random());
+  },
+  
+  fallingLetter: function(char) {
+    var letter = $E('div', {'class': 'tn-letter', 'html': char}).insertTo(this.field.element);
   }
 });

@@ -15,5 +15,7 @@ var TypeNinja = new Class({
     
     this.game = new TypeNinja.Game();
     this.ui   = new TypeNinja.UI(this.element, this.game);
+    
+    this.ui.render();
   }
 });
