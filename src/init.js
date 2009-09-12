@@ -5,7 +5,8 @@
  */
 [
   'type_ninja',
-  'type_ninja/keyboard'
+  'type_ninja/keyboard',
+  'type_ninja/field'
   
 ].each(function(file) {
   document.writeln('<scr'+'ipt src="src/'+file+'.js"></scr'+'ipt>');
