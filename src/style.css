@@ -4,6 +4,37 @@ div.tn-layout {
   font-family: Arial;
 }
 
+div.tn-progress {
+  width: 41.3em;
+  margin-left: .15em;
+}
+div.tn-progress div.tn-progress-container {
+  overflow: hidden;
+  height: 2.2em;
+}
+div.tn-progress div.tn-progress-container div {
+  height: 2.2.em;
+}
+div.tn-progress div.tn-progress-container span {
+  display: block;
+  float: left;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  border: 0.1em solid #CCC;
+  background: #FDD;
+  -moz-border-radius: .3em;
+  -webkit-border-radius: .3em;
+  cursor: pointer;
+  margin-right: .144em;
+}
+div.tn-progress div.tn-progress-container span.tn-progress-key-disabled {
+  background: #EEE;
+  color: #888;
+  border-color: #DDD;
+}
+
 div.tn-field {
   border: 1px solid #DDD;
   background: #FFE;
@@ -12,6 +43,7 @@ div.tn-field {
   margin-left: .15em;
   -moz-border-radius: .4em;
   -webkit-border-radius: .4em;
+  margin-top: .4em;
 }
 
 div.tn-keyboard {

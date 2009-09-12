@@ -5,6 +5,8 @@
  */
 TypeNinja.Keyboard = new Class(Observer, {
   extend: {
+    EVENTS: $w('layout_change'),
+    
     LAYOUTS: {
       EN: [
         '`~1!2@3#4$5%6^7&8*9(0)-_=+',
@@ -28,10 +30,7 @@ TypeNinja.Keyboard = new Class(Observer, {
       '01234444321111',
       '0123444432111',
       '112344443211'
-    ],
-
-    // the keys presenting sequence
-    SEQUENCE: "fjdksla; gtyrueiwoqpbnvmc,x.z/'FJDKSLA:GHTYRUEIWOQPBNVMC<X>Z?\"675849302-1=^&%*$(#)@_!+"
+    ]
   },
   
   /**
@@ -39,10 +38,12 @@ TypeNinja.Keyboard = new Class(Observer, {
    *
    * @param String optional initial layout name
    */
-  initialize: function(layout_name) {
+  initialize: function(layout_name, options) {
+    this.$super(options);
+    
     this.element = $E('div', {'class': 'tn-keyboard'});
     
-    this.build().connect().setLayout(layout_name || this.constructor.LAYOUTS.DEFAULT);
+    this.build().connect();
   },
   
   /**
@@ -54,7 +55,7 @@ TypeNinja.Keyboard = new Class(Observer, {
   setLayout: function(name) {
     var down = null;
     
-    this.constructor.LAYOUTS[name.toUpperCase()].each(function(row, i) {
+    (this.layout = this.constructor.LAYOUTS[name.toUpperCase()]).each(function(row, i) {
       row.split('').each(function(symbol, j) {
         if (j % 2) {
           var key = this.keys[down.charCodeAt()] = this.keys[symbol.charCodeAt()] = this.rows[i][(j-1)/2];
@@ -65,7 +66,7 @@ TypeNinja.Keyboard = new Class(Observer, {
       }, this);
     }, this);
     
-    return this;
+    return this.fire('layout_change', this.layout);
   },
   
   shiftUp: function(event) {
