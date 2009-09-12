@@ -60,7 +60,7 @@ TypeNinja.Progress = new Class(Observer, {
       offset = -max_size;
     }
     
-    this.container.morph({marginLeft: offset+'px'})
+    this.container.morph({left: offset+'px'})
     
     
     return this;

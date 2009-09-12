@@ -6,7 +6,6 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
 }
 
 a {
@@ -21,7 +20,8 @@ a {
   background: #FFF;
   width: 60em;
   margin: auto auto;
-  -moz-box-shadow: grey 0 0 1em;
+  -moz-box-shadow: grey 0 -1em 1em;
+  -webkit-box-shadow: grey 0 -1em 1em;
   position: relative;
   min-height: 50em;
 }

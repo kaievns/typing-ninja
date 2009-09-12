@@ -11,9 +11,12 @@ div.tn-progress {
 div.tn-progress div.tn-progress-container {
   overflow: hidden;
   height: 2.2em;
+  position: relative;
 }
 div.tn-progress div.tn-progress-container div {
-  height: 2.2.em;
+  height: 2.2em;
+  width: 600em;
+  position: relative;
 }
 div.tn-progress div.tn-progress-container span {
   display: block;
