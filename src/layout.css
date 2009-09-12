@@ -1,0 +1,50 @@
+/* the home page layout stylesheet */
+html, body {
+  font-size: 10pt;
+  font-family: Verdana;
+  background: #efe;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+a {
+  color: brown;
+}
+
+#body {
+  height: 100%;
+  border: 1px solid #DDD;
+  border-top: none;
+  border-bottom: none;
+  background: #FFF;
+  width: 60em;
+  margin: auto auto;
+  -moz-box-shadow: grey 0 0 1em;
+  position: relative;
+  min-height: 50em;
+}
+#head, #main, #foot {
+  padding: 1.5em;
+}
+
+#head {
+  
+}
+
+#foot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-align: right;
+  color: #888;
+}
+
+#logo {
+  text-decoration: none;
+  font-size: 4em;
+  font-family: Georgia;
+  font-weight: bold;
+}

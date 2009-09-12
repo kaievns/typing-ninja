@@ -1,3 +1,4 @@
+/* the game styles */
 div.tn-layout {
   width: 640pt;
   font-family: Arial;
@@ -6,13 +7,17 @@ div.tn-layout {
 div.tn-field {
   border: 1px solid #DDD;
   background: #FFE;
-  width: 488pt;
-  height: 300px;
+  width: 41.3em;
+  height: 20em;
+  margin-left: .15em;
+  -moz-border-radius: .4em;
+  -webkit-border-radius: .4em;
 }
 
 div.tn-keyboard {
-  width: 41.5em;
+  width: 42em;
   height: 14.5em;
+  margin-top: .4em;
 }
 
 div.tn-keyboard div span.tn-keyboard-key {
@@ -23,7 +28,7 @@ div.tn-keyboard div span.tn-keyboard-key {
   line-height: 2.5em;
   width: 2.5em;
   text-align: center;
-  border: 1px solid #DDD;
+  border: .1em solid #DDD;
   margin: .1em;
   background: #EEE;
   -moz-border-radius: .4em;
