@@ -1,7 +1,56 @@
 /* the game styles */
 div.tn-layout {
-  width: 640pt;
   font-family: Arial;
+}
+
+div.tn-settings {
+  float: right;
+  width: 14em;
+}
+div.tn-settings fieldset {
+  border: 0;
+  border-top: 1px solid #DDD;
+  margin-bottom: 1em;
+}
+div.tn-settings fieldset legend {
+  font-size: 120%;
+  font-weight: bold;
+  color: #444;
+}
+div.tn-settings fieldset div.tn-settings-option {
+  margin: .3em;
+}
+div.tn-settings fieldset label {
+  font-weight: bold;
+  display: inline-block;
+* display: inline;
+* zoom: 1;
+  width: 6em;
+}
+div.tn-settings fieldset select {
+  width: 5em;
+  margin-left: 2em;
+}
+div.tn-settings input.tn-start, div.tn-settings input.tn-stop {
+  border: 1px solid #DDD;
+  background: #EFE;
+  width: 100%;
+  height: 2em;
+  font-size: 1em;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+  margin-top: 1em;
+  -moz-border-radius: .3em;
+  -webkit-border-radius: .3em;
+}
+div.tn-settings input.tn-stop {
+  background: #FEE;
+}
+div.tn-settings a.tn-reset {
+  float: right;
+  text-decoration: none;
+  margin-bottom: -1em;
 }
 
 div.tn-progress {
@@ -39,7 +88,7 @@ div.tn-progress div.tn-progress-container span.tn-progress-key-disabled {
 }
 
 div.tn-field {
-  border: 1px solid #DDD;
+  border: 1px solid #CCC;
   background: #FFE;
   width: 41.3em;
   height: 20em;
@@ -63,7 +112,7 @@ div.tn-keyboard div span.tn-keyboard-key {
   line-height: 2.5em;
   width: 2.5em;
   text-align: center;
-  border: .1em solid #DDD;
+  border: .1em solid #CCC;
   margin: .1em;
   background: #EEE;
   -moz-border-radius: .4em;

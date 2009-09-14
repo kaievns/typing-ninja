@@ -20,9 +20,7 @@ TypeNinja.Keyboard = new Class(Observer, {
         'йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪ\\/',
         'фФыЫвВаАпПрРоОлЛдДжЖэЭ',
         'яЯчЧсСмМиИтТьЬбБюЮ.,'
-      ],
-      
-      DEFAULT: 'EN'
+      ]
     },
     
     FINGERS: [
@@ -112,7 +110,7 @@ TypeNinja.Keyboard = new Class(Observer, {
     this.rows = []; // the row by row keys list
     
     // grabbing the default layout as the model
-    this.constructor.LAYOUTS[this.constructor.LAYOUTS.DEFAULT].each(function(row, i) {
+    this.constructor.LAYOUTS.EN.each(function(row, i) {
       var row_el = this.buildRow(i, row);
       
       if (i == 0) row_el.insert(this.buildKey('&larr;', 'backspace', 8));
