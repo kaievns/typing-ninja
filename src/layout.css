@@ -10,6 +10,17 @@ html, body {
 
 a {
   color: brown;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+  font-family: Georgia;
+  font-weight: normal;  
+  color: #88AA8A;
+  margin-top: 0;
 }
 
 #body {
@@ -31,6 +42,7 @@ a {
 
 #head {
   background: #efe;
+  position: relative;
 }
 
 #foot {
@@ -47,4 +59,21 @@ a {
   font-size: 4em;
   font-family: Georgia;
   font-weight: bold;
+}
+
+#main-menu {
+  position: absolute;
+  right: 1.5em;
+  bottom: .5em;
+  list-style: none;
+}
+#main-menu li {
+  float: left;
+  padding: 0 .5em;
+}
+#main-menu li a {
+  
+}
+#main-menu li.current a {
+  font-weight: bold; 
 }
