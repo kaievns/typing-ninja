@@ -41,8 +41,11 @@ var TypeNinja = new Class({
     
     
     // initializing the layout
-    this.keyboard.setLayout('en');
-    this.progress.setLevel(2);
+    this.settings
+      .setLayout(Cookie.get('tn-layout') || 'en')
+      .setSpeed((Cookie.get('tn-speed') || '2').toInt());
+      
+    this.progress.setLevel((Cookie.get('tn-level') || '2').toInt());
     
     
     // initiating the statisticss
@@ -59,6 +62,7 @@ var TypeNinja = new Class({
   
   stop: function() {
     this.stopped = true;
+    this.field.clear();
   },
   
 // proteced

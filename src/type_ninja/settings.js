@@ -23,12 +23,12 @@ TypeNinja.Settings = new Class(Observer, {
   
   // increases the speed
   advance: function() {
-    this.speeds.setValue(this.getSpeed() + 1).change();
+    return this.setSpeed(this.getSpeed() + 1);
   },
   
   // decreases the speed
   slowDown: function() {
-    this.speeds.setValue(this.getSpeed() - 1).change();
+    return this.setSpeed(this.getSpeed() - 1);
   },
   
   // updates the most-missed list
@@ -58,6 +58,18 @@ TypeNinja.Settings = new Class(Observer, {
     return this.calcAccuracy();
   },
   
+  setLayout: function(name) {
+    if (name) this.layouts.value = name;
+    Cookie.set('tn-layout', this.layouts.value, {duration: 99999})
+    return this.fire('layout_change', this.layouts.value);
+  },
+  
+  setSpeed: function(value) {
+    if (value) this.speeds.value = value;
+    Cookie.set('tn-speed', this.speeds.value, {duration: 99999})
+    return this.fire('speed_change', this.speeds.value);
+  },
+  
 // protected
 
   calcAccuracy: function() {
@@ -71,8 +83,8 @@ TypeNinja.Settings = new Class(Observer, {
   },
 
   connect: function() {
-    this.layouts.onChange(function() { this.fire('layout_change', this.layouts.value); }.bind(this));
-    this.speeds.onChange(function() { this.fire('speed_change', this.speeds.value); }.bind(this));
+    this.layouts.onChange(this.setLayout.bind(this));
+    this.speeds.onChange(this.setSpeed.bind(this));
     
     this.trigger.onClick(function() {
       this.trigger.toggleClass('tn-stop').set(

@@ -44,6 +44,17 @@ TypeNinja.Field = new Class(Observer, {
     }
   },
   
+  // removes all currently moving symbols
+  clear: function() {
+    this.stack.each(function(item) {
+      item.element.droppinFx.cancel();
+      item.element.remove();
+    });
+    this.stack = [];
+    
+    return this;
+  },
+  
 // protected
   
   // pulls the key out of the dropping keys list
