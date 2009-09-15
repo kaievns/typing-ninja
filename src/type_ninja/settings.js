@@ -6,6 +6,8 @@
 TypeNinja.Settings = new Class(Observer, {
   EVENTS: $w('layout_change speed_change stop_click start_click reset'),
   
+  MOST_MISSED_COUNT: 15,
+  
   initialize: function(options) {
     this.$super(options);
     
@@ -33,16 +35,16 @@ TypeNinja.Settings = new Class(Observer, {
   updateMostMissed: function(most_missed) {
     var chart = [];
     
+    // building the char by putting the most missed up onto the list
     for (var key in most_missed) {
-      if (most_missed[key] > 0) {
-        chart.push({
-          symbol: key,
-          count: most_missed[key]
-        })
-      }
+      chart.push({ symbol: key, count: most_missed[key]});
     }
     
-    chart = chart.sortBy('count').reverse().slice(0, TypeNinja.Settings.MOST_MISSED_COUNT);
+    chart = chart.sortBy('count').reverse().slice(0, this.MOST_MISSED_COUNT);
+    
+    this.mostMissed.update(chart.map(function(item) {
+      return $E('div', {'class': 'tn-key', html: item.symbol});
+    }));
   },
   
   countHit: function() {
@@ -116,7 +118,7 @@ TypeNinja.Settings = new Class(Observer, {
       ]);
       
     // building the most missed block
-    this.mostMissed = $E('div');
+    this.mostMissed = $E('div', {'class': 'tn-most-missed'});
     
     $E('fieldset').update('<legend>Most Missed</legend>')
       .insertTo(this.element).insert(this.mostMissed);

@@ -3,11 +3,12 @@
  *
  * Copyright (C) 2009 Nikolay V. Nemshilov aka St.
  */
-
 var TypeNinja = new Class({
-  extend: {
-    ADVANCING_THRESHOLD: 1,
-  },
+  HITS_BEFORE_ADVANCING: 8,
+  MISS_BEFORE_SLOW_DOWN: 2,
+  
+  MAX_MISSES_BEFORE_LEVEL_UP:   2,
+  MIN_MISSES_BEFORE_LEVEL_DOWN: 8,
   
   initialize: function(element) {
     this.element = $E('div', {'class': 'tn-layout'}).insertTo(element);
@@ -29,7 +30,6 @@ var TypeNinja = new Class({
       .onLayoutChange(this.progress.setLayout.bind(this.progress))
       .onKeyPress(this.field.keyPressed.bind(this.field));
       
-      
     this.settings
       .onLayoutChange(this.keyboard.setLayout.bind(this.keyboard))
       .onStartClick(this.start.bind(this))
@@ -45,10 +45,10 @@ var TypeNinja = new Class({
     this.progress.setLevel(2);
     
     
+    // initiating the statisticss
     this.missedKeys = {};
     this.hitsCounter = 0;
     this.missCounter = 0;
-    //this.start();
   },
   
   start: function() {
@@ -66,16 +66,21 @@ var TypeNinja = new Class({
   countHit: function(char) {
     if (this.missedKeys[char])
       this.missedKeys[char] --;
+      
+    if (this.missedKeys[char] < 1)
+      delete(this.missedKeys[char]);
     
     this.hitsCounter ++;
     this.missCounter = 0;
     
-    if (this.hitsCounter > TypeNinja.ADVANCING_THRESHOLD) {
+    if (this.hitsCounter > this.HITS_BEFORE_ADVANCING) {
       this.settings.advance();
       this.hitsCounter = 0;
     }
     
     this.settings.countHit().updateMostMissed(this.missedKeys);
+    
+    this.checkProgress();
   },
   
   countMiss: function(char) {
@@ -85,21 +90,38 @@ var TypeNinja = new Class({
     this.missCounter ++;
     this.hitsCounter = 0;
     
-    if (this.missCounter > TypeNinja.ADVANCING_THRESHOLD) {
+    if (this.missCounter > this.MISS_BEFORE_SLOW_DOWN) {
       this.settings.slowDown();
     }
     
     this.settings.countMiss().updateMostMissed(this.missedKeys);
+    
+    this.checkProgress();
   },
   
   dropNext: function() {
     if (this.stopped) return false;
     
-    var speed = (10 - this.settings.getSpeed()) * 1000;
+    var speed = 1000 + 7000 * (10 - this.settings.getSpeed()) / 10;
     
-    var symbol = this.progress.getActive().random();
+    var symbol = this.progress.getActive().concat(this.mostMissedChars()).random();
     this.field.drop(symbol, speed, this.keyboard.getKeyLeftOffset(symbol));
     
     this.timer = this.dropNext.bind(this).delay(speed/2);
+  },
+  
+  // returns the list of most missed chars
+  mostMissedChars: function() {
+    return Object.keys(this.missedKeys);
+  },
+  
+  // adjusts the progress bar position
+  checkProgress: function() {
+    var missed_chars = this.mostMissedChars();
+    
+    if (missed_chars.length < this.MAX_MISSES_BEFORE_LEVEL_UP)
+      this.progress.levelUp();
+    else if (missed_chars.length > this.MIN_MISSES_BEFORE_LEVEL_DOWN)
+      this.progress.levelDown();
   }
 });

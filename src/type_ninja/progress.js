@@ -53,6 +53,32 @@ TypeNinja.Progress = new Class(Observer, {
     return this;
   },
   
+  /**
+   * Levels up the progressbar
+   *
+   * @return this
+   */
+  levelUp: function() {
+    if (this.level < this.layout.length) this.setLevel(this.level + 2);
+    
+    return this;
+  },
+  
+  /**
+   * Levels down the progressbar
+   *
+   * @return this
+   */
+  levelDown: function() {
+    if (this.level > 1) this.setLevel(this.level - 1);
+    return this;
+  },
+  
+  /**
+   * Returns a list of the currently active chars
+   *
+   * @return Array of chars
+   */
   getActive: function() {
     return this.layout.flatten().slice(0, this.level+1);
   },

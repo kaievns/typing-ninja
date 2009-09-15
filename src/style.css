@@ -88,12 +88,27 @@ div.tn-settings a.tn-reset {
   margin-bottom: -0.5em;
 }
 
+div.tn-settings div.tn-most-missed div.tn-key {
+  float: left;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  border: 1px solid #DDD;
+  background: #EEE;
+  -moz-border-radius: .3em;
+  -webkit-border-radius: .3em;
+  margin-right: .3em;
+  margin-bottom: .3em;
+  font-weight: bold;
+}
+
 /** The Field block styles */
 div.tn-field {
   border: 1px solid #CCC;
   background: #FFE;
   width: 41.3em;
-  height: 20em;
+  height: 12em;
   margin-left: .15em;
   -moz-border-radius: .4em;
   -webkit-border-radius: .4em;
