@@ -16,7 +16,7 @@ div.tn-progress div.tn-progress-container {
 div.tn-progress div.tn-progress-container div {
   height: 2.2em;
   width: 600em;
-  position: relative;
+  position: absolute;
 }
 div.tn-progress div.tn-progress-container span {
   display: block;

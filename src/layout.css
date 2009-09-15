@@ -2,7 +2,7 @@
 html, body {
   font-size: 10pt;
   font-family: Verdana;
-  background: #efe;
+  background: #eee;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -30,14 +30,14 @@ a {
 }
 
 #head {
-  
+  background: #efe;
 }
 
 #foot {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 100%;
+  width: 57em;
   text-align: right;
   color: #888;
 }

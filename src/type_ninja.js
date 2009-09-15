@@ -44,7 +44,7 @@ var TypeNinja = new Class({
     this.settings
       .setLayout(Cookie.get('tn-layout') || 'en')
       .setSpeed((Cookie.get('tn-speed') || '2').toInt());
-      
+
     this.progress.setLevel((Cookie.get('tn-level') || '2').toInt());
     
     

@@ -59,14 +59,16 @@ TypeNinja.Settings = new Class(Observer, {
   },
   
   setLayout: function(name) {
-    if (name) this.layouts.value = name;
-    Cookie.set('tn-layout', this.layouts.value, {duration: 99999})
+    if (isString(name)) this.layouts.value = (name || 'en').toUpperCase();
+    Cookie.set('tn-layout', this.layouts.value, {duration: 99999});
+    
     return this.fire('layout_change', this.layouts.value);
   },
   
   setSpeed: function(value) {
-    if (value) this.speeds.value = value;
-    Cookie.set('tn-speed', this.speeds.value, {duration: 99999})
+    if ('123456789'.includes(''+value)) this.speeds.value = ''+value;
+    Cookie.set('tn-speed', this.speeds.value, {duration: 99999});
+    
     return this.fire('speed_change', this.speeds.value);
   },
   

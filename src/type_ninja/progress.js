@@ -50,7 +50,7 @@ TypeNinja.Progress = new Class(Observer, {
     
     this.scrollTo(this.level);
     
-    Cookie.set('tn-level', ''+this.level, {duration: 99999});
+    Cookie.set('tn-level', ''+(((this.level > 1) ? this.level : 1)+1), {duration: 99999});
     
     return this;
   },

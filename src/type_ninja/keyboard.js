@@ -51,7 +51,7 @@ TypeNinja.Keyboard = new Class(Observer, {
    * @return Keyboard self
    */
   setLayout: function(name) {
-    var down = null;
+    var down = null, name = name || 'EN';
     
     (this.layout = this.constructor.LAYOUTS[name.toUpperCase()]).each(function(row, i) {
       row.split('').each(function(symbol, j) {
