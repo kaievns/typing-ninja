@@ -5,7 +5,7 @@
  */
 TypeNinja.Keyboard = new Class(Observer, {
   extend: {
-    EVENTS: $w('layout_change'),
+    EVENTS: $w('layout_change key_press'),
     
     LAYOUTS: {
       EN: [
@@ -81,6 +81,15 @@ TypeNinja.Keyboard = new Class(Observer, {
     return this;
   },
   
+  getKeyLeftOffset: function(symbol) {
+    var key = this.keys[symbol.charCodeAt()], offset = 0;
+    if (key) {
+      offset = key.position().x - this.element.position().x;
+    }
+    
+    return offset;
+  },
+  
 // protected
   
   hightlightKey: function(event) {
@@ -89,6 +98,7 @@ TypeNinja.Keyboard = new Class(Observer, {
       if (!event.altKey && !event.ctrlKey && !event.metaKey) {
         event.stop();
         key.highlight({duration: 160});
+        this.fire('key_press', event.charCode || event.keyCode);
       }
     }
   },

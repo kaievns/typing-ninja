@@ -20,10 +20,11 @@ TypeNinja.Settings = new Class(Observer, {
     this.speeds.onChange(function() { this.fire('speed_change', this.speeds.value); }.bind(this));
     
     this.trigger.onClick(function() {
-      this.fire(this.trigger.hasClass('tn-stop') ? 'stop_click' : 'start_click');
       this.trigger.toggleClass('tn-stop').set(
         'value', this.trigger.hasClass('tn-stop') ? 'Stop' : 'Start'
       ).blur();
+      
+      this.fire(this.trigger.hasClass('tn-stop') ? 'start_click' : 'stop_click');
     }.bind(this));
     
     this.reset.onClick(function(event) {
@@ -47,9 +48,9 @@ TypeNinja.Settings = new Class(Observer, {
       ]);
     
     // building the statistic block
-    this.hits     = $E('span');
-    this.missed   = $E('span');
-    this.accuracy = $E('span');
+    this.hits     = $E('span', {html: '0'});
+    this.missed   = $E('span', {html: '0'});
+    this.accuracy = $E('span', {html: '0'});
     this.reset    = $E('a', {'class': 'tn-reset', html: 'Reset', href: ''});
     
     $E('fieldset').update('<legend>Statistic</legend>')

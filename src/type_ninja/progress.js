@@ -42,12 +42,23 @@ TypeNinja.Progress = new Class(Observer, {
    * @return this
    */
   setLevel: function(number) {
-    var index = isString(number) ? this.sequence.indexOf(number) : number - 1;
+    this.level = isString(number) ? this.sequence.indexOf(number) : number - 1;
     
     this.keys.each(function(key, i) {
-      key[i > index ? 'addClass' : 'removeClass']('tn-progress-key-disabled');
-    });
+      key[i > this.level ? 'addClass' : 'removeClass']('tn-progress-key-disabled');
+    }, this);
     
+    this.scrollTo(this.level);
+    
+    return this;
+  },
+  
+  getActive: function() {
+    return this.layout.flatten().slice(0, this.level+1);
+  },
+  
+// protected
+  scrollTo: function(index) {
     var box_size = this.containerBox.offsetWidth;
     var key_size = this.keys[0].offsetWidth + 2;
     var max_size = (key_size * this.keys.length) - box_size;
@@ -60,13 +71,9 @@ TypeNinja.Progress = new Class(Observer, {
       offset = -max_size;
     }
     
-    this.container.morph({left: offset+'px'})
-    
-    
-    return this;
+    this.container.morph({left: offset+'px'});
   },
   
-// protected
   build: function() {
     this.enLayout  = TypeNinja.Keyboard.LAYOUTS.EN.join('').split('');
     this.sequence = this.SEQUENCE.split('');

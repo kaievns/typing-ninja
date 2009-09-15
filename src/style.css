@@ -3,56 +3,7 @@ div.tn-layout {
   font-family: Arial;
 }
 
-div.tn-settings {
-  float: right;
-  width: 14em;
-}
-div.tn-settings fieldset {
-  border: 0;
-  border-top: 1px solid #DDD;
-  margin-bottom: 1em;
-}
-div.tn-settings fieldset legend {
-  font-size: 120%;
-  font-weight: bold;
-  color: #444;
-}
-div.tn-settings fieldset div.tn-settings-option {
-  margin: .3em;
-}
-div.tn-settings fieldset label {
-  font-weight: bold;
-  display: inline-block;
-* display: inline;
-* zoom: 1;
-  width: 6em;
-}
-div.tn-settings fieldset select {
-  width: 5em;
-  margin-left: 2em;
-}
-div.tn-settings input.tn-start, div.tn-settings input.tn-stop {
-  border: 1px solid #DDD;
-  background: #EFE;
-  width: 100%;
-  height: 2em;
-  font-size: 1em;
-  font-weight: bold;
-  color: #444;
-  cursor: pointer;
-  margin-top: 1em;
-  -moz-border-radius: .3em;
-  -webkit-border-radius: .3em;
-}
-div.tn-settings input.tn-stop {
-  background: #FEE;
-}
-div.tn-settings a.tn-reset {
-  float: right;
-  text-decoration: none;
-  margin-bottom: -1em;
-}
-
+/** The progressbar styles */
 div.tn-progress {
   width: 41.3em;
   margin-left: .15em;
@@ -87,6 +38,57 @@ div.tn-progress div.tn-progress-container span.tn-progress-key-disabled {
   border-color: #DDD;
 }
 
+/** Sidebar styles */
+div.tn-settings {
+  float: right;
+  width: 14em;
+}
+div.tn-settings fieldset {
+  border: 0;
+  border-top: 1px solid #DDD;
+  margin-bottom: .5em;
+}
+div.tn-settings fieldset legend {
+  font-size: 120%;
+  font-weight: bold;
+  color: #444;
+}
+div.tn-settings fieldset div.tn-settings-option {
+  margin: .3em;
+}
+div.tn-settings fieldset label {
+  font-weight: bold;
+  display: inline-block;
+* display: inline;
+* zoom: 1;
+  width: 7.5em;
+}
+div.tn-settings fieldset select {
+  width: 5em;
+}
+div.tn-settings input.tn-start, div.tn-settings input.tn-stop {
+  border: 1px solid #DDD;
+  background: #EFE;
+  width: 100%;
+  height: 2em;
+  font-size: 1em;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+  margin-top: 1em;
+  -moz-border-radius: .3em;
+  -webkit-border-radius: .3em;
+}
+div.tn-settings input.tn-stop {
+  background: #FEE;
+}
+div.tn-settings a.tn-reset {
+  float: right;
+  text-decoration: none;
+  margin-bottom: -0.5em;
+}
+
+/** The Field block styles */
 div.tn-field {
   border: 1px solid #CCC;
   background: #FFE;
@@ -96,8 +98,24 @@ div.tn-field {
   -moz-border-radius: .4em;
   -webkit-border-radius: .4em;
   margin-top: .4em;
+  position: relative;
 }
 
+div.tn-field div.tn-key {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  background: #EEE;
+  border: 1px solid #BBB;
+  -moz-border-radius: .4em;
+  -webkit-border-radius: .4em;
+  position: absolute;
+  font-weight: bold;
+}
+
+
+/** The Keyboard block Styles */
 div.tn-keyboard {
   width: 42em;
   height: 14.5em;
