@@ -13,11 +13,11 @@ TypeNinja.Field = new Class(Observer, {
   },
   
   // receives the requests to drop another symbol
-  drop: function(symbol, offset_left) {
+  drop: function(symbol, duration, offset_left) {
     var key = $E('div', {'class': 'tn-key', html: symbol, style: 'left: '+offset_left+'px'}).insertTo(this.element);
     
     key.droppinFx = new Fx.Morph(key, {
-      duration: 8000, fps: 40,
+      duration: duration, fps: 40,
       onFinish: function() {
         var element = this.pullElement(symbol.charCodeAt());
         if (element) {

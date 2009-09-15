@@ -5,6 +5,10 @@
  */
 
 var TypeNinja = new Class({
+  extend: {
+    ADVANCING_THRESHOLD: 1,
+  },
+  
   initialize: function(element) {
     this.element = $E('div', {'class': 'tn-layout'}).insertTo(element);
     
@@ -40,6 +44,10 @@ var TypeNinja = new Class({
     this.keyboard.setLayout('en');
     this.progress.setLevel(2);
     
+    
+    this.missedKeys = {};
+    this.hitsCounter = 0;
+    this.missCounter = 0;
     //this.start();
   },
   
@@ -47,7 +55,6 @@ var TypeNinja = new Class({
     this.stopped = false;
     
     this.dropNext();
-    
   },
   
   stop: function() {
@@ -57,19 +64,42 @@ var TypeNinja = new Class({
 // proteced
 
   countHit: function(char) {
-    console.log("Hit", char);
+    if (this.missedKeys[char])
+      this.missedKeys[char] --;
+    
+    this.hitsCounter ++;
+    this.missCounter = 0;
+    
+    if (this.hitsCounter > TypeNinja.ADVANCING_THRESHOLD) {
+      this.settings.advance();
+      this.hitsCounter = 0;
+    }
+    
+    this.settings.countHit().updateMostMissed(this.missedKeys);
   },
   
   countMiss: function(char) {
-    console.log("Miss", char);
+    if (!this.missedKeys[char]) this.missedKeys[char] = 0;
+    this.missedKeys[char] ++;
+    
+    this.missCounter ++;
+    this.hitsCounter = 0;
+    
+    if (this.missCounter > TypeNinja.ADVANCING_THRESHOLD) {
+      this.settings.slowDown();
+    }
+    
+    this.settings.countMiss().updateMostMissed(this.missedKeys);
   },
   
   dropNext: function() {
     if (this.stopped) return false;
     
-    var symbol = this.progress.getActive().random();
-    this.field.drop(symbol, this.keyboard.getKeyLeftOffset(symbol));
+    var speed = (10 - this.settings.getSpeed()) * 1000;
     
-    this.timer = this.dropNext.bind(this).delay(2000);
+    var symbol = this.progress.getActive().random();
+    this.field.drop(symbol, speed, this.keyboard.getKeyLeftOffset(symbol));
+    
+    this.timer = this.dropNext.bind(this).delay(speed/2);
   }
 });

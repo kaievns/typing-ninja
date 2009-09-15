@@ -14,7 +14,60 @@ TypeNinja.Settings = new Class(Observer, {
     this.build().connect();
   },
   
+  // returns the current speed as an integer between 1 and 9
+  getSpeed: function() {
+    return this.speeds.value.toInt();
+  },
+  
+  // increases the speed
+  advance: function() {
+    this.speeds.setValue(this.getSpeed() + 1).change();
+  },
+  
+  // decreases the speed
+  slowDown: function() {
+    this.speeds.setValue(this.getSpeed() - 1).change();
+  },
+  
+  // updates the most-missed list
+  updateMostMissed: function(most_missed) {
+    var chart = [];
+    
+    for (var key in most_missed) {
+      if (most_missed[key] > 0) {
+        chart.push({
+          symbol: key,
+          count: most_missed[key]
+        })
+      }
+    }
+    
+    chart = chart.sortBy('count').reverse().slice(0, TypeNinja.Settings.MOST_MISSED_COUNT);
+  },
+  
+  countHit: function() {
+    this.hits.innerHTML = ''+(this.hits.innerHTML.toInt() + 1);
+    
+    return this.calcAccuracy();
+  },
+  
+  countMiss: function() {
+    this.missed.innerHTML = ''+(this.missed.innerHTML.toInt() + 1);
+    return this.calcAccuracy();
+  },
+  
 // protected
+
+  calcAccuracy: function() {
+    var hits = this.hits.innerHTML.toInt();
+    var missed = this.missed.innerHTML.toInt();
+    var accuracy = hits / (hits+missed) * 100;
+    
+    this.accuracy.innerHTML = (accuracy || 0).round() + '%';
+    
+    return this;
+  },
+
   connect: function() {
     this.layouts.onChange(function() { this.fire('layout_change', this.layouts.value); }.bind(this));
     this.speeds.onChange(function() { this.fire('speed_change', this.speeds.value); }.bind(this));
@@ -29,7 +82,8 @@ TypeNinja.Settings = new Class(Observer, {
     
     this.reset.onClick(function(event) {
       event.stop();
-      this.fire('reset');
+      this.hits.innerHTML = this.missed.innerHTML = '0';
+      this.calcAccuracy().fire('reset');
     }.bind(this));
   },
   
